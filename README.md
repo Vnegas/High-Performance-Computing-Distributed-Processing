@@ -1,39 +1,97 @@
-# Programación Paralela en C y C++
+# High-Performance Computing & Distributed Processing
 
-Repositorio destinado a los lenguajes C y C++, empleando el uso de la programación paralela y concurrente.
+A collection of projects and exercises exploring **parallel, concurrent, and distributed programming** using C and C++.
 
-Este repositorio contiene ejemplos, ejercicios y proyectos relacionados con la programación paralela en C y C++. Se utilizan diferentes paradigmas y herramientas para la ejecución concurrente y distribuida.
+The repository covers multiple programming models and focuses on concurrency, workload distribution, performance optimization, and distributed computation.
 
-## Tecnologías y Herramientas Utilizadas
+## Technologies & Concepts
 
-- Pthreads (hilos POSIX)
-
-- C++ Threads (biblioteca estándar de C++)
-
-- OpenMP (programación paralela en memoria compartida)
-
-- MPI (programación paralela en memoria distribuida)
-
-## Creditos
-Sebastián Venegas Brenes
+- **C / C++**
+- **POSIX Threads (Pthreads)**
+- **C++ Threads**
+- **OpenMP**
+- **MPI**
+- **Task-based concurrency**
+- **Thread synchronization**
+- **Producer-Consumer architecture**
+- **Socket programming**
+- **Performance profiling and optimization**
+- **Shared-memory and distributed-memory parallelism**
 
 ---
 
-# Parallel Programming in C and C++
+## Featured Projects
 
-Repository for C and C++, using parallel and concurrent programming.
+### Parallel ZIP Password Search
 
-This repository contains examples, exercises, and projects related to parallel programming in C and C++. Different paradigms and tools are used for concurrent and distributed execution.
+A brute-force ZIP password search implemented progressively using different parallel programming approaches.
 
-## Technologies and Tools Used
+The project started with a serial implementation and evolved through Pthreads, OpenMP, and workload-distribution optimizations. Performance was analyzed using profiling tools, speedup, and efficiency measurements.
 
-- Pthreads (POSIX threads)
+**Implementations:**
 
-- C++ Threads (C++ standard library)
+- Serial baseline
+- Optimized serial implementation
+- Pthreads
+- OpenMP
+- Static workload distribution
+- Dynamic workload distribution
 
-- OpenMP (shared memory parallel programming)
+**[→ View project and performance analysis](./Individual/Projects/zippass_optimized/)**
 
-- MPI (distributed memory parallel programming)
+---
 
+### Concurrent Web Server
+
+A concurrent web server implemented in C++ using TCP sockets and a Producer-Consumer architecture.
+
+The server handles multiple client connections and provides functionality for Goldbach's conjecture and prime factorization.
+
+**Technologies & concepts:**
+
+- C++
+- TCP sockets
+- Multithreading
+- Producer-Consumer
+- MVC architecture
+- Singleton pattern
+- Sieve of Eratosthenes
+
+**[→ View project documentation](./Team/projects/project1/)**
+
+---
+
+### Parallel Heat Diffusion Simulation
+
+A numerical simulation of heat diffusion across a rectangular grid, developed to study parallelization and performance.
+
+The project includes profiling and an OpenMP implementation. In the reported test configuration, the parallel implementation achieved up to **3.72× speedup with 16 threads** compared with the serial implementation.
+
+**[→ View project](./Team/projects/project2/)**  
+**[→ View performance analysis](./Team/projects/project2/performance_analysis/report.md)**
+
+---
+
+## Repository Structure
+
+```text
+Individual/
+├── Examples/
+├── Exercises/
+└── Projects/
+    ├── zippass_serial/
+    ├── zippass_pthread/
+    ├── zippass_openmp/
+    └── zippass_optimized/
+
+Team/
+├── common/
+└── projects/
+    ├── project1/
+    ├── project2/
+```
+---
 ## Credits
 Sebastián Venegas Brenes
+
+Computer Science & Informatics
