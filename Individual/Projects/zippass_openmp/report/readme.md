@@ -6,7 +6,7 @@ Para la optimización serial del código, se utilizó la herramienta Kcachegrind
 
 Por lo que, como optimización se optó por mover ese fragmento de código, para que solo abriera los archivos una vez. Logrando un mayor desempeño, un speedup y una mayor eficiencia; pues era lo que más atrasaba en la ejecución, como se observa en la siguiente imagen:
 
-![Kcachegrind](./Kcachegrind.png)
+![Kcachegrind](../../zippass_optimized/report/Kcachegrind.png)
 
 > ## Pthread Reporte
 
@@ -24,7 +24,7 @@ De igual manera, se realiza un intento de optimización por medio del uso de la 
 
 > ## Comparación de optimizaciones
 
-Debido a la realización de varias optimizaciones, es muy enriquecedor poder comparlas entre sí para determinar cuál aportó más al incremento del desempeño (`speedup`) o genera mejor eficiencia. Todas las mediciones se realizaron en la misma máquina y con el mismo [caso de prueba](../pthread_optimized/tests/input006.txt). Las versiones a comparar son:
+Debido a la realización de varias optimizaciones, es muy enriquecedor poder comparlas entre sí para determinar cuál aportó más al incremento del desempeño (`speedup`) o genera mejor eficiencia. Todas las mediciones se realizaron en la misma máquina y con el mismo [caso de prueba](../../zippass_optimized/pthread_optimized/tests/input006.txt). Las versiones a comparar son:
 - Serial
 - Serial Optimizada
 - Pthread
@@ -45,7 +45,7 @@ Del gráfico anterior se puede concluir que la eficiencia va incrementando en ca
 
 > ## Grado de concurencia
 
-De igual manera, se compararon las optimizaciones a nivel de concurrencia (cantidad de hilos y su desempeño); para lograr estas comparaciones, igual que las anteriores, se realizaron en la misma máquina, con el mismo [caso de prueba](../pthread_optimized/tests/input006.txt) y las mismas versiones.
+De igual manera, se compararon las optimizaciones a nivel de concurrencia (cantidad de hilos y su desempeño); para lograr estas comparaciones, igual que las anteriores, se realizaron en la misma máquina, con el mismo [caso de prueba](../../zippass_optimized/pthread_optimized/tests/input006.txt) y las mismas versiones.
 
 Para realizar las comparaciones, se usaron 6 niveles de concurrencia en función de C, es decir  se registraron en la hoja de cálculo 6 mediciones de la duración de los programas:
 - 1 hilo de ejecución
