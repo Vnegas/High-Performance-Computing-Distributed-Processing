@@ -1,42 +1,72 @@
- # Tarea02: zippass_pthread
+# ZIP Password Brute-Force — Pthreads Implementation
 
-Programa que encuentra mediante fuerza bruta la contraseña para desencriptar los archivos comprimidos dentro de un archivo ZIP. El programa no extrae los archivos, simplemente encuentra e imprime la contraseña en la salida estándar. Para un mayor desempeño, se implementa concurrencia. Los hilos se dividen el trabajo de encontrar la posible contraseña para cada archivo.
+A parallel brute-force program that attempts to find passwords protecting ZIP files using **POSIX Threads (Pthreads)**.
 
-El programa recibe como parámetro el número de hilos que se van a utilizar en la ejecución, si no se provee utiliza el número máximo de hilos del equipo. Además, lee de la entrada estándar un lote de trabajo, como el presentado en el siguiente ejemplo:
+This implementation extends the serial ZIP password search by distributing the password search space among multiple threads, allowing several password candidates to be tested concurrently.
 
-> Ejemplo de entrada:
+## Input
 
-    0123456789
-    5
+The program reads the following information from standard input:
 
-    tests/zip_05/f01.zip
-    tests/zip_05/f23.zip
-    tests/zip_05/f09.zip
+1. The set of characters that can be used in the password.
+2. The maximum password length.
+3. The paths of the ZIP files to process.
 
-> Ejemplo de salida:
+The number of threads is provided as a command-line argument.
 
-    tests/zip_05/f01.zip 00112
-    tests/zip_05/f23.zip
-    tests/zip_05/f09.zip 9209
+### Example
 
-Un lote consiste de lo siguiente:
-1. La primera línea corresponde al alfabeto con que se escribió la o las contraseñas. Corresponde a un subconjunto de caracteres ASCII.
-2. La cantidad máxima de caracteres que posee la contraseña. Corresponde a un límite para mantener la búsqueda finita.
-3. Una línea en blanco de separación.
-4. La cuarta y subsecuentes líneas corresponden a una lista de archivos ZIP a los que se les debe encontrar la contraseña. Cada línea contiene un nombre de archivo y una ruta relativa a la carpeta donde se encuentra su proyecto.
+```text
+0123456789
+5
 
-### Valor de retorno
----
-En la salida estándar se imprime la ruta de cada archivo y la contraseña que lo desencripta separados por un espacio en blanco. 
+tests/zip_05/f01.zip
+tests/zip_05/f23.zip
+tests/zip_05/f09.zip
+```
 
-Si el programa no pudo encontrar la contraseña, imprime sólo el nombre del archivo y un cambio de línea. 
+The program can be executed with a specified number of threads:
 
-Los archivos en la salida se imprimen en el mismo orden en que se encuentran en la entrada estándar.
+```bash
+./zippass_pthread 8 < input.txt
+```
 
-Para una representación gráfica, se puede observar aquí [representacion_grafica](./design/readme.md)
+## Output
 
-### Creditos
----
-Sebastian Venegas Brenes
+The program prints the path of each ZIP file followed by the password found.
 
-Correo: sebastian.venegas@ucr.ac.cr
+```text
+tests/zip_05/f01.zip 00112
+tests/zip_05/f23.zip
+tests/zip_05/f09.zip 9209
+```
+
+If a password cannot be found within the specified search space, only the ZIP file path is printed.
+
+The output preserves the same order as the input files.
+
+## Parallelization
+
+The password search is parallelized using **POSIX Threads (Pthreads)**.
+
+The search space is divided among the worker threads, allowing multiple password candidates to be evaluated concurrently.
+
+The number of threads can be configured when executing the program, making it possible to evaluate the effect of different levels of concurrency on execution time.
+
+## Implementation
+
+This project is the parallel counterpart to the serial implementation of the ZIP password search.
+
+It provides a basis for analyzing the performance impact of multithreading before introducing additional workload-distribution and optimization strategies.
+
+## Design
+
+The design and architecture of the application are documented in the [`design`](./design/) directory.
+
+## Documentation
+
+API documentation generated with Doxygen is available in the project documentation.
+
+## Author
+
+**Sebastián Venegas Brenes**
